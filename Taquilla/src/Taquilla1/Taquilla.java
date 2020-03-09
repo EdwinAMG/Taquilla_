@@ -169,9 +169,14 @@ public class Taquilla {
 		boolean existeEq1 = false;
 		boolean existeEq2 = false;
 		boolean existePart = false;
+		boolean equiposIguales = false;
 		Equipo equipo1 = null; 
 		Equipo equipo2 = null;
 		Estadio estadio = null;
+		
+		if(nombreEq1.equalsIgnoreCase(nombreEq2)) {
+			equiposIguales = true;
+		}
 		
 		for( int i = 0 ; i < estadios.size(); i++) {
 			if(estadios.get(i).getNombre().equalsIgnoreCase(nombreEst)) {
@@ -204,7 +209,7 @@ public class Taquilla {
 					break;
 				}
 			}
-			if(existePart == false) {
+			if(existePart == false && equiposIguales == false) {
 				partidos.add(partido);
 				equipo1.AgregarPartido(partido);
 				equipo2.AgregarPartido(partido);
@@ -219,6 +224,9 @@ public class Taquilla {
 		}
 		if(existePart == true) {
 			//ERROR YA EXISTE EL PARTIDO
+		}
+		if(equiposIguales == true) {
+			//ERROR DE QUE ES EL MISMO EQUIPO
 		}
 	}
 	
